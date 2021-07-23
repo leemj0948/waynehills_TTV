@@ -2,14 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import Footer from './Footer';
 
-const Middle = (props) => {
+const Middle = ({ move, setMove }) => {
+  const controlMove = () => {
+    setMove(!move);
+  };
   return (
-    <Form>
+    <Form move={move}>
       <CopyWrite>
         The easiest way
         <br /> to make a video
       </CopyWrite>
-      <Btn>Start</Btn>
+      <Btn onClick={controlMove}>Start</Btn>
       <Footer />
     </Form>
   );
@@ -17,8 +20,10 @@ const Middle = (props) => {
 
 const Form = styled.div`
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
+  position: absolute;
+  transform: ${(props) => props.move && `translate(-100vw, 50vw)`};
+  transition: all 2s;
   margin-left: 30%;
   width: 60%;
   height: 100vh;
@@ -49,9 +54,6 @@ const Btn = styled.button`
   cursor: pointer;
 
   :active {
-    ransform: translate3d(0, 0, 0);
-    transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
-      box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 

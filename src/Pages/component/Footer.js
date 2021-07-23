@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Footer = (props) => {
+const Footer = ({ move }) => {
   return (
-    <Footers>
+    <Footers move={move}>
       <Team>
         <p>Team of Use</p>
       </Team>
@@ -19,6 +19,7 @@ const Footer = (props) => {
 const Footers = styled.div`
   display: flex;
   margin: 3vw 0 5vw;
+  padding-top: ${(props) => (props.move && '85vh') || '20vh'};
   color: white;
 `;
 const Team = styled.div`

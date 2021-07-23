@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Footer from './Footer';
 
-const ChangeMiddle = (props) => {
+const ChangeMiddle = ({ move }) => {
   const [count, setCount] = useState('');
   const handleInput = (e) => {
     setCount(e.target.value);
@@ -10,10 +10,15 @@ const ChangeMiddle = (props) => {
   const PLACEHOLDER = 'Put your script here 500~5,000 letters.';
   return (
     <Form>
-      <Input placeholder={PLACEHOLDER} onChange={(e) => handleInput(e)}></Input>
-      <Counter>{count.length} letters</Counter>
-      <ConvertBtn disabled={count.length === 0 && true}>Convert</ConvertBtn>
-      <Footer />
+      <Movement move={move}>
+        <Input
+          placeholder={PLACEHOLDER}
+          onChange={(e) => handleInput(e)}
+        ></Input>
+        <Counter>{count.length} letters</Counter>
+        <ConvertBtn disabled={count.length === 0 && true}>Convert</ConvertBtn>
+      </Movement>
+      <Footer move={move} />
     </Form>
   );
 };
@@ -25,6 +30,16 @@ const Form = styled.div`
   width: 60%;
   height: 100vh;
   background-color: black;
+`;
+const Movement = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  position: absolute;
+  top: -100vh;
+  right: -100vw;
+  transform: ${(props) => props.move && `translate(-110vw, 60vw)`};
+  transition: all 2s;
 `;
 const Input = styled.textarea`
   padding: 2rem;

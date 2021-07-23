@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Bannerleft from './component/Bannerleft';
 import BannerRight from './component/BannerRight';
 import ChangeMiddle from './component/ChangeMiddle';
 import Middle from './component/Middle';
 
-const main = (props) => {
+const Main = (props) => {
+  const [move, setMove] = useState(false);
+
   return (
     <Background>
       <Bannerleft />
       <BannerRight />
       <Title>TTV A.I</Title>
-      {/* <Middle /> */}
-      <ChangeMiddle />
+      <Middle move={move} setMove={setMove} />
+      <ChangeMiddle move={move} />
     </Background>
   );
 };
@@ -30,4 +32,4 @@ const Title = styled.div`
   color: white;
 `;
 
-export default main;
+export default Main;
