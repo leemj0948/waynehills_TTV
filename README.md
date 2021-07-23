@@ -1,7 +1,7 @@
 ## 앱 구동 
 
-npm install
-nom start 
+1. npm install
+2. npm start 
 
 ## 기술 스택 
 styled component , react 
